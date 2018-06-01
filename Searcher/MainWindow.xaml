@@ -1,0 +1,99 @@
+﻿<Window x:Class="Searcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Searcher"
+        mc:Ignorable="d"
+        Title="Searcher" 
+        Height="576.305" 
+        Width="640.443" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed">
+    <Grid>
+        <StackPanel  Margin="10">
+            <TextBlock 
+                Margin="5"
+                Text="Выберите стартоваю директорию"/>
+
+            <StackPanel  Orientation="Horizontal"  Margin="5">
+                <Button 
+                    Name="btnOpen" 
+                    Click="btnOpen_Click" 
+                    Width="70" 
+                    Margin="0 5 5 5"
+                    Content="Выбрать"/>
+                <TextBox 
+                    Width="512"
+                    Name="txtOpen" 
+                    Margin="5"
+                    IsReadOnly="True"/>
+
+            </StackPanel>
+
+            <TextBlock 
+                Margin="5"
+                Text="Введите шаблон имени файла"/>
+
+            <TextBox
+                Name="txtName"
+                Margin="5"/>
+            <CheckBox 
+                Name="cb"
+                Margin="5" 
+                Checked="CheckBox_Checked" 
+                Unchecked="CheckBox_Unchecked"
+                Content="Поиск по содержанию?"/>
+            <TextBox 
+                Name="txtText"
+                Margin="5"
+                IsEnabled="False"/>
+
+            <Button 
+                Margin="5"
+                IsEnabled="False"
+                Name="btnSearch"
+                Click="btnSearch_Click"
+                Content="Старт"/>
+            <Button 
+                Margin="5"
+                IsEnabled="False"
+                Name="btnCancel"
+                Click="btnCancel_Click"
+                Content="Остановить"/>
+            <Button 
+                Margin="5"
+                IsEnabled="False"
+                Name="btnPause"
+                Click="btnPause_Click"
+                Content="Пауза"/>
+            <TreeView
+               
+                Margin="5" 
+                Name="tree" 
+                ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                Height="178">
+                
+            </TreeView>
+
+        </StackPanel>
+
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="5"
+            Name="txtLog"/>
+
+        <TextBlock
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="5"
+            Name="txtStatus"/>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="5"
+            Name="txtTime"/>
+    </Grid>
+</Window>
