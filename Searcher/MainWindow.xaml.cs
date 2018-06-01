@@ -30,6 +30,7 @@ namespace Searcher
         private HashSet<string> context;
         List<string> list = new List<string>();
         #endregion
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace Searcher
             txtName.Text = Properties.Settings.Default.Name;
             txtOpen.Text = Properties.Settings.Default.Path;
             cb.IsChecked = Properties.Settings.Default.Check;
+            txtText.Text = Properties.Settings.Default.Text;
 
             if (txtOpen.Text != "")
             {
@@ -79,12 +81,12 @@ namespace Searcher
                                     {
                                         var fileContext = File.ReadAllLines(fi.FullName);
                                         context = new HashSet<string>(fileContext);
-                                        if (context.Contains(txtText.Text))
+                                        if (fileContext.Contains(txtText.Text))
                                         {
-                                            var viewItem = new TreeViewItem()
-                                            {
-                                                Header = fi.Name
-                                            };
+                                            var viewItem = new TreeViewItem();
+                                            viewItem.Header = fi.Name;
+                                            viewItem.AddHandler(UIElement.PreviewMouseDownEvent, new MouseButtonEventHandler(mouse_Down));
+                                            viewItem.DataContext = fi.FullName;
                                             tree.Items.Add(viewItem);
                                         }
                                     }
@@ -194,6 +196,7 @@ namespace Searcher
             Properties.Settings.Default.Name = txtName.Text;
             Properties.Settings.Default.Path = txtOpen.Text;
             Properties.Settings.Default.Check = Convert.ToBoolean(cb.IsChecked);
+            Properties.Settings.Default.Text = txtText.Text;
             Properties.Settings.Default.Save();
         }
         #endregion

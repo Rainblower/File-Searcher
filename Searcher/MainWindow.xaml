@@ -82,18 +82,13 @@
         <TextBlock
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Margin="5"
+            Margin="15"
             Name="txtLog"/>
 
         <TextBlock
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Margin="5"
+            Margin="15"
             Name="txtStatus"/>
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Margin="5"
-            Name="txtTime"/>
     </Grid>
 </Window>
