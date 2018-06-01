@@ -52,7 +52,20 @@ namespace Searcher
             {
                 this.Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    list.AddRange(Directory.GetFiles(open, $"*{txtName.Text}*", SearchOption.AllDirectories));
+                    try
+                    {
+                        list.AddRange(Directory.GetFiles(open, $"*{txtName.Text}*", SearchOption.AllDirectories));
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        System.Windows.MessageBox.Show("Отказано в доступе");
+                    }
+                    catch (DirectoryNotFoundException)
+                    {
+                        System.Windows.MessageBox.Show("Указаная директория не существует");
+
+                    }
+
                     foreach (var item in list.ToList())
                     {
                         this.Dispatcher.BeginInvoke(new Action(() =>
